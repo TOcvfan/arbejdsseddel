@@ -57,14 +57,12 @@ export class AdminPage extends React.Component {
                     dato: Yup.string().min(3, 'der skal flere tal på').required('husk at udfylde dato'),
                     telefon: Yup.string().min(6, 'der skal flere tal på').max(12, 'der er for mange tal').required('Phone is required')
                 })}
-                  onSubmit={({values}, { setStatus, setSubmitting }) => {
+                  onSubmit={(values, { setStatus, setSubmitting }) => {
                     setStatus();
                     fetch('https://nameless-ocean-57332.herokuapp.com/arbejdsseddel', {
                         method: 'post',
                         headers: {'Content-Type': 'application/json'},
-                        body: JSON.stringify({
-                          values
-                        })
+                        body: JSON.stringify(values)
                     })
                     .then((response) => (response.json()))
                     .catch(error => console.log(error))
