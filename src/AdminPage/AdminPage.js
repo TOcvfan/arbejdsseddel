@@ -35,7 +35,7 @@ export class AdminPage extends React.Component {
 
       handleChange = date => {
         this.setState({
-          startDate: date
+          dato: date
         });
       };
     
@@ -66,7 +66,7 @@ export class AdminPage extends React.Component {
                     })
                     .then((response) => (response.json()))
                     .catch(error => console.log(error))
-                    /*.then(
+                    .then(
                       user => {
                           const { from } = this.props.location.state || { from: { pathname: "/" } };
                           this.props.history.push(from);
@@ -75,7 +75,7 @@ export class AdminPage extends React.Component {
                           setSubmitting(false);
                           setStatus(error);
                       }
-                  )*/;
+                  );
                   }}
                 
               
@@ -162,9 +162,11 @@ export class AdminPage extends React.Component {
                         Dato<span className="req">*</span>
                       </label>
                       <DatePicker className='form-control' 
-                        selected={this.state.startDate}
+                        selected={this.state.dato}
                         onChange={this.handleChange}
-                        dateFormat="dd-MM-yyyy"
+                        value={Selection}
+                        withPortal
+                        disabledKeyboardNavigation
                       />
                       
                   </div>
